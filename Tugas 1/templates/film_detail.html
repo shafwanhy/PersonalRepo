@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ film.title }} - Detail Film</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">{{ film.title }}</h1>
+        <div class="card mx-auto" style="max-width: 600px;">
+            <img src="{{ film.image }}" class="card-img-top" alt="{{ film.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ film.title }} ({{ film.release_date }})</h5>
+                <p class="card-text"><strong>Director:</strong> {{ film.director }}</p>
+                <p class="card-text"><strong>Producer:</strong> {{ film.producer }}</p>
+                <p class="card-text">{{ film.description }}</p>
+                <a href="/" class="btn btn-secondary">Kembali</a>
+                <a href="/characters/{{ film.id }}" class="btn btn-primary">Lihat Karakter</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

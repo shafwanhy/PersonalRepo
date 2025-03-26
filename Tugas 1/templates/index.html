@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Ghibli Films</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .card {
+            border: 1px solid #ddd; padding: 10px; margin: 10px;
+            width: 300px; text-align: left; background: #f9f9f9;
+        }
+        .card img { width: 100%; height: auto; }
+        .btn { padding: 5px 10px; margin-top: 10px; display: block; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h1>Studio Ghibli Films</h1>
+    <div class="container" id="film-list"></div>
+
+    <script>
+        $(document).ready(function() {
+            $.getJSON("/films", function(data) {
+                let filmList = $("#film-list");
+                data.forEach(film => {
+                    filmList.append(`
+                        <div class="card">
+                            <img src="${film.image || 'https://via.placeholder.com/300x400'}" alt="${film.title}">
+                            <h3>${film.title} (${film.release_date})</h3>
+                            <p>${film.description.substring(0, 100)}...</p>
+                            <a class="btn" href="/film/${film.id}" style="background:#3498db; color:#fff;">Lihat Detail</a>
+                            <a class="btn" href="/characters/${film.id}" style="background:#2ecc71; color:#fff;">Lihat Karakter</a>
+                        </div>
+                    `);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

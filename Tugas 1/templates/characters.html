@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karakter - {{ film_title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Karakter dari {{ film_title }}</h1>
+        {% if characters %}
+            <div class="row">
+                {% for character in characters %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ character.name }}</h5>
+                            <p class="card-text"><strong>Gender:</strong> {{ character.gender }}</p>
+                            <p class="card-text"><strong>Age:</strong> {{ character.age }}</p>
+                            <p class="card-text"><strong>Eye Color:</strong> {{ character.eye_color }}</p>
+                            <p class="card-text"><strong>Hair Color:</strong> {{ character.hair_color }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center">Tidak ada karakter ditemukan untuk film ini.</p>
+        {% endif %}
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Kembali ke Beranda</a>
+        </div>
+    </div>
+</body>
+</html>
